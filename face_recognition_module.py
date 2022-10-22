@@ -40,7 +40,11 @@ known_names, known_face_encodings = encode_faces("C:/Users/Cfrias/Documents/hack
 #vs = WebcamVideoStream(src=0).start()
 video_capture = cv2.VideoCapture(0)
 assert video_capture.isOpened()  # Make sure that there is a stream.
-
+x_shape = int(video_capture.get(cv2.CAP_PROP_FRAME_WIDTH))
+y_shape = int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+four_cc = cv2.VideoWriter_fourcc(*"MJPG")  # Using MJPEG codex
+out = cv2.VideoWriter("DigiMemoir.avi", four_cc, 10,
+                      (x_shape, y_shape))
 # Initialize some variables
 face_locations = []
 face_encodings = []
@@ -119,6 +123,7 @@ while True:
 
     # Display the resulting image
     cv2.imshow('Video', frame)
+    out.write(frame)
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord('q'):
