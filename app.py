@@ -115,7 +115,13 @@ with st.sidebar.form(key ='Form1'):
                                                       ' the worst of times,'
                                                       ' the age of wisdom, the age of foolishness, ...')
     spec = st.checkbox('Mark as extremely special')
-    submitted1 = st.form_submit_button(label='Submit memory ⚡')
+    submitted = st.form_submit_button(label='Submit memory ⚡')
+
+if submitted:
+    st.subheader('New memory unlocked!')
+    st.image(uploaded_file)
+    st.write(f'Introducing {user_word}')
+    st.write(f'{description}')
 
 run = st.checkbox('Run')
 # FRAME_WINDOW = st.image([])
