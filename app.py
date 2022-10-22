@@ -112,8 +112,8 @@ with st.sidebar.form(key ='Form1'):
     user_word = st.text_input("Enter a name", "e.g. Ada Lovelace")
     category = st.radio("Choose a category", ("Person", "Object", "Landscape"))
     description = st.text_area('Describe the memory', 'It was the best of times,'
-                                                      ' it was the worst of times, it was'
-                                                      ' the age of wisdom, it was the age of foolishness, ...')
+                                                      ' the worst of times,'
+                                                      ' the age of wisdom, the age of foolishness, ...')
     spec = st.checkbox('Mark as extremely special')
     submitted1 = st.form_submit_button(label='Submit memory ⚡')
 
