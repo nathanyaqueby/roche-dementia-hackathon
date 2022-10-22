@@ -3,6 +3,8 @@ import torch
 from torch import hub
 from time import time
 import numpy as np
+from imutils.video import WebcamVideoStream
+
 
 
 class ObjectDetection:
@@ -18,7 +20,7 @@ class ObjectDetection:
 
     def get_video_stream(self):
         # change the number to 0 if you only have 1 camera
-        stream = cv2.VideoCapture(1)  # 0 means read from the default camera, 1 the next camera, and so on...
+        stream = cv2.VideoCapture(0)  # 0 means read from the default camera, 1 the next camera, and so on...
         return stream
 
     """
@@ -73,11 +75,14 @@ class ObjectDetection:
         four_cc = cv2.VideoWriter_fourcc(*"MJPG")  # Using MJPEG codex
         out = cv2.VideoWriter(self.out_file, four_cc, 20,
                               (x_shape, y_shape))
-        ret, frame = player.read()  # Read the first frame.
+        vs = WebcamVideoStream(src=0).start()
+        #ret, frame = player.read()
+        #frame = vs.read()  # Read the first frame.
         while True:  # Run until stream is out of frames
             start_time = time()  # We would like to measure the FPS.
-            ret, frame = player.read()
-            assert ret
+            frame = vs.read()
+            #ret, frame = player.read()
+            #assert ret
             results = self.score_frame(frame)  # Score the Frame
             frame = self.plot_boxes(results, frame)  # Plot the boxes.
             end_time = time()
@@ -88,6 +93,9 @@ class ObjectDetection:
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             # ret, frame = player.read()  # Read next frame.
+        # Release handle to the webcam
+        vs.release()
+        cv2.destroyAllWindows()
 
 
 a = ObjectDetection()
