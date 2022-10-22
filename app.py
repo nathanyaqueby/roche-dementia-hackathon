@@ -120,7 +120,7 @@ with st.sidebar.form(key ='Form1'):
 if submitted:
     st.subheader('New memory unlocked!')
     st.image(uploaded_file)
-    st.write(f'Introducing {user_word}')
+    st.subheader(f'Introducing: {user_word}')
     st.write(f'{description}')
 
 run = st.checkbox('Run')
