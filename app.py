@@ -129,7 +129,7 @@ run = st.checkbox('Run')
 # a = ObjectDetection()
 
 if run:
-    video_file = open('DigiMemoir.avi', 'rb')
+    video_file = open('DigiMemoir.mp4', 'rb')
     video_bytes = video_file.read()
 
     st.video(video_bytes)
