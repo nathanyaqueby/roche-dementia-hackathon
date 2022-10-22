@@ -119,7 +119,9 @@ run = st.checkbox('Run')
 # camera = cv2.VideoCapture(1)
 # a = ObjectDetection()
 
-while run:
-    st.write("Running...")
+if run:
+    st.write("We cannot access your webcam :(")
+    st.write("Have a cat instead:")
+    st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
 else:
     st.write('Check the "Run" box above to turn on the camera and start analyzing')
