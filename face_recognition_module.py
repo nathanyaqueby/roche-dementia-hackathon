@@ -7,6 +7,7 @@ import os
 import re
 import click
 import numpy as np
+import textwrap
 
 def images_folder(folder):
     return [os.path.join(folder, f) for f in os.listdir(folder) if re.match(r'.*\.(jpg|jpeg|png)', f, flags=re.I)]
@@ -91,9 +92,30 @@ while True:
         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
         # Draw a label with a name below the face
-        cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+        cv2.rectangle(frame, (left, top - 35), (right, top), (0, 0, 255), cv2.FILLED)
         font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+        cv2.putText(frame, name, (left + 6, top - 6), font, 1.0, (255, 255, 255), 1)
+        if name == "Gaby":
+            description ="Gaby is your granddaughter, she is 33 now and she loves you very much! She also loves your cookies"
+            # Draw a label with a name below the face
+            #cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+            font = cv2.FONT_HERSHEY_DUPLEX
+            wrapped_text = textwrap.wrap(description, width=30)
+            x, y = 10, 40
+            font_size = 0.5
+            font_thickness = 1
+            for i, line in enumerate(wrapped_text):
+                textsize = cv2.getTextSize(line, font, font_size, font_thickness)[0]
+                text_w, text_h = textsize
+                gap = textsize[1] + 10
+                y = int((frame.shape[0] + textsize[1]) / 2) + i * gap
+                x = int((frame.shape[1] - textsize[0]) / 2)
+                #cv2.rectangle(frame, (x+100, y+100), (x + text_w, y + text_h), (0, 0, 0), -1)
+                cv2.putText(frame, line, (x + 180, y+50), font,
+                                font_size, 
+                                (0,255,255), 
+                                font_thickness, 
+                                lineType = cv2.LINE_AA)
 
     # Display the resulting image
     cv2.imshow('Video', frame)
