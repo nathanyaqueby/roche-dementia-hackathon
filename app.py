@@ -117,18 +117,19 @@ with st.sidebar.form(key ='Form1'):
     spec = st.checkbox('Mark as extremely special')
     submitted = st.form_submit_button(label='Submit memory ⚡')
 
-if submitted:
+run = st.checkbox('Run')
+
+if submitted and not run:
     st.subheader('New memory unlocked!')
     st.image(uploaded_file)
     st.subheader(f'Introducing: {user_word}')
     st.write(f'{description}')
 
-run = st.checkbox('Run')
 # FRAME_WINDOW = st.image([])
 # camera = cv2.VideoCapture(1)
 # a = ObjectDetection()
 
-if run:
+elif run:
 
     width = 50
     side = max((100 - width) / 2, 0.01)
@@ -136,8 +137,25 @@ if run:
     video_file = open('DigiMemoir.mp4', 'rb')
     video_bytes = video_file.read()
 
-    col1, container, col2 = st.columns([side, width, side])
+    col1, container, col2 = st.columns([side, width, side], gap="medium")
+
+    if submitted:
+        col1.subheader('New memory unlocked! ✨')
+        col1.image(uploaded_file)
+        col1.subheader(f'Introducing: {user_word}')
+        col1.write(f'{description}')
+
     container.video(video_bytes, start_time=0)
+
+    col2.subheader("Special memory found! 🧠")
+    col2.write("Click here to play audio description")
+
+    audio_file = open("gaby_digimemoir.mp3", "rb")
+    audio_bytes = audio_file.read()
+
+    col2.audio(audio_bytes, format="audio/ogg", start_time=0)
+
+
     #st.write("Oops! We cannot access your webcam :(")
     #st.write("Have a cat instead:")
     #st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
