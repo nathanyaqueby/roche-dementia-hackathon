@@ -111,6 +111,13 @@ with st.sidebar.form(key ='Form1'):
     uploaded_file = st.file_uploader("Choose an image")
     user_word = st.text_input("Enter a name", "e.g. Ada Lovelace")
     category = st.radio("Choose a category", ("Person", "Object", "Landscape"))
+    description = st.text_area('Describe the memory', '''
+        It was the best of times, it was the worst of times, it was
+        the age of wisdom, it was the age of foolishness, it was
+        the epoch of belief, it was the epoch of incredulity, it
+        was the season of Light, it was the season of Darkness, it
+        was the spring of hope, it was the winter of despair, (...)
+        ''')
     spec = st.checkbox('Mark as extremely special')
     submitted1 = st.form_submit_button(label='Submit memory ⚡')
 
@@ -120,7 +127,7 @@ run = st.checkbox('Run')
 # a = ObjectDetection()
 
 if run:
-    st.write("We cannot access your webcam :(")
+    st.write("Oops! We cannot access your webcam :(")
     st.write("Have a cat instead:")
     st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
 else:
