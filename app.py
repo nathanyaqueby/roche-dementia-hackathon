@@ -5,7 +5,7 @@ from torch import hub
 from time import time
 import numpy as np
 
-
+"""
 class ObjectDetection:
 
     def __init__(self, out_file="testing.avi"):
@@ -22,10 +22,6 @@ class ObjectDetection:
         stream = cv2.VideoCapture(1)  # 0 means read from the default camera, 1 the next camera, and so on...
         return stream
 
-    """
-    The function below identifies the device which is availabe to make the prediction and uses it to load and infer the frame. Once it has results it will extract the labels and cordinates(Along with scores) for each object detected in the frame.
-    """
-
     def score_frame(self, frame):
         self.model.to(self.device)
         frame = [frame]
@@ -34,20 +30,9 @@ class ObjectDetection:
         return labels, cord
 
     def class_to_label(self, x):
-        """
-        For a given label value, return corresponding string label.
-        :param x: numeric label
-        :return: corresponding string label
-        """
         return self.classes[int(x)]
 
     def plot_boxes(self, results, frame):
-        """
-        Takes a frame and its results as input, and plots the bounding boxes and label on to the frame.
-        :param results: contains labels and coordinates predicted by model on the given frame.
-        :param frame: Frame which has been scored.
-        :return: Frame with bounding boxes and labels ploted on it.
-        """
         labels, cord = results
         n = len(labels)
         x_shape, y_shape = frame.shape[1], frame.shape[0]
@@ -59,10 +44,6 @@ class ObjectDetection:
                 cv2.rectangle(frame, (x1, y1), (x2, y2), bgr, 2)
                 cv2.putText(frame, self.class_to_label(labels[i]), (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 0.9, bgr, 2)
         return frame
-
-    """
-    The function below orchestrates the entire operation and performs the real-time parsing for video stream.
-    """
 
     def __call__(self):
         player = self.get_video_stream()  # Get your video stream.
@@ -91,6 +72,7 @@ class ObjectDetection:
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             # ret, frame = player.read()  # Read next frame.
+"""
 
 ###############
 ## Dashboard ##
@@ -114,9 +96,10 @@ with st.sidebar.form(key ='Form1'):
     submitted1 = st.form_submit_button(label='Submit memory ⚡')
 
 run = st.checkbox('Run')
-# FRAME_WINDOW = st.image([])
-# camera = cv2.VideoCapture(1)
-a = ObjectDetection()
+
+# a = ObjectDetection()
+def a():  # dummy function, replace with the real one during demo
+    return None
 
 while run:
     a()
