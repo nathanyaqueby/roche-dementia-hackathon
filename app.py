@@ -129,8 +129,12 @@ run = st.checkbox('Run')
 # a = ObjectDetection()
 
 if run:
-    st.write("Oops! We cannot access your webcam :(")
-    st.write("Have a cat instead:")
-    st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+    video_file = open('DigiMemoir.avi', 'rb')
+    video_bytes = video_file.read()
+
+    st.video(video_bytes)
+    #st.write("Oops! We cannot access your webcam :(")
+    #st.write("Have a cat instead:")
+    #st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
 else:
-    st.write('Check the "Run" box above to turn on the camera and start analyzing')
+    st.write('Check the box above to turn on the camera and start analyzing')
