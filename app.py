@@ -102,22 +102,18 @@ st.title("DigiMemoir")
 st.markdown("Welcome to **_DigiMemoir_**, a virtual person and object recognition system that"
             " enables you to **attach memories** to any everyday item. Using AI and Augmented Reality, we help"
             " dementia & Alzheimer patients remember past experiences and sentiments.")
+st.markdown("Check out our documentation ([GitHub](https://github.com/nathanyaqueby/roche-dementia-hackathon))")
 
 st.sidebar.image("DigiMemoir.png", use_column_width=True)
-st.sidebar.write("Check out our [documentation (GitHub)](https://github.com/nathanyaqueby/roche-dementia-hackathon)")
 st.sidebar.title("Upload a new memory")
 
 with st.sidebar.form(key ='Form1'):
     uploaded_file = st.file_uploader("Choose an image")
     user_word = st.text_input("Enter a name", "e.g. Ada Lovelace")
     category = st.radio("Choose a category", ("Person", "Object", "Landscape"))
-    description = st.text_area('Describe the memory', '''
-        It was the best of times, it was the worst of times, it was
-        the age of wisdom, it was the age of foolishness, it was
-        the epoch of belief, it was the epoch of incredulity, it
-        was the season of Light, it was the season of Darkness, it
-        was the spring of hope, it was the winter of despair, (...)
-        ''')
+    description = st.text_area('Describe the memory', 'It was the best of times,'
+                                                      ' it was the worst of times, it was'
+                                                      ' the age of wisdom, it was the age of foolishness, ...')
     spec = st.checkbox('Mark as extremely special')
     submitted1 = st.form_submit_button(label='Submit memory ⚡')
 
