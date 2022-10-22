@@ -129,19 +129,14 @@ run = st.checkbox('Run')
 # a = ObjectDetection()
 
 if run:
-    DEFAULT_WIDTH = 80
 
-    width = st.sidebar.slider(
-        label="Width", min_value=0, max_value=100, value=DEFAULT_WIDTH, format="%d%%"
-    )
-
-    width = max(width, 0.01)
+    width = 50
     side = max((100 - width) / 2, 0.01)
 
     video_file = open('DigiMemoir.mp4', 'rb')
     video_bytes = video_file.read()
 
-    _, container, _ = st.columns([side, width, side])
+    col1, container, col2 = st.columns([side, width, side])
     container.video(video_bytes, start_time=0)
     #st.write("Oops! We cannot access your webcam :(")
     #st.write("Have a cat instead:")
