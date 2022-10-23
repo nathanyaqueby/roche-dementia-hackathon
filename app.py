@@ -131,9 +131,10 @@ with st.sidebar.form(key='Form1'):
     spec = st.checkbox('Mark as extremely special')
     submitted = st.form_submit_button(label='Submit memory ⚡')
 
-run = st.checkbox('Run')
+# run = st.checkbox('Run')
+run = st.selectbox("Pick an AI model to start!", ("Face & person recognition", "Object detection"))
 
-if submitted and not run:
+if submitted and run not in ["Face & person recognition", "Object detection"]:
     st.subheader('New memory unlocked!')
     st.image(uploaded_file)
     st.subheader(f'Meet {user_word}')
@@ -145,12 +146,17 @@ if submitted and not run:
 # camera = cv2.VideoCapture(1)
 # a = ObjectDetection()
 
-elif run:
+elif run in ["Face & person recognition", "Object detection"]:
 
     width = 50
     side = max((100 - width) / 2, 0.01)
 
-    video_file = open('DigiMemoir.mp4', 'rb')
+    if run == "Face & person recognition":
+        video_file = open('DigiMemoir.mp4', 'rb')
+        audio_file = open("gaby_digimemoir.mp3", "rb")
+    else:
+        video_file = open('DigiMemoir_Object.mp4', 'rb')
+        audio_file = open("micro_digimemoir.mp3", "rb")
     video_bytes = video_file.read()
 
     col1, container, col2 = st.columns([side, width, side], gap="medium")
@@ -172,28 +178,41 @@ elif run:
     col2.subheader("Special memory found! 🧠")
     col2.write("Click here to play audio description")
 
-    audio_file = open("gaby_digimemoir.mp3", "rb")
     audio_bytes = audio_file.read()
 
     col2.audio(audio_bytes, format="audio/ogg", start_time=0)
 
     col2.subheader("Related memories")
-    tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
 
-    with tab0:
-        st.image("digimemoir_pics/0.png")
+    if run == "Person & face recognition":
+        tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
 
-    with tab1:
-        # st.subheader("Banu")
-        st.image("digimemoir_pics/1.png")
+        with tab0:
+            st.image("digimemoir_pics/0.png")
 
-    with tab2:
-        # st.header("Queby")
-        st.image("digimemoir_pics/2.png")
+        with tab1:
+            st.image("digimemoir_pics/1.png")
 
-    with tab3:
-        # st.header("Urska")
-        st.image("digimemoir_pics/3.png")
+        with tab2:
+            st.image("digimemoir_pics/2.png")
+
+        with tab3:
+            st.image("digimemoir_pics/3.png")
+
+    else:
+        tab0, tab1, tab2, tab3 = col2.tabs(["Microwave", "Stove", "Fridge", "Spoon"])
+
+        with tab0:
+            st.image("digimemoir_pics/4.png")
+
+        with tab1:
+            st.image("digimemoir_pics/5.png")
+
+        with tab2:
+            st.image("digimemoir_pics/6.png")
+
+        with tab3:
+            st.image("digimemoir_pics/8.png")
 
 
     #st.write("Oops! We cannot access your webcam :(")
