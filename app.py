@@ -175,22 +175,21 @@ elif run:
     tab1, tab2, tab3 = col2.tabs(["Banu", "Queby", "Urska"])
 
     with tab1:
-        st.header("Banu")
-        st.image("digimemoir_pics/1.png", width=100)
+        # st.subheader("Banu")
+        st.image("digimemoir_pics/1.png")
 
     with tab2:
-        st.header("Queby")
-        st.image("digimemoir_pics/2.png", width=100)
+        # st.header("Queby")
+        st.image("digimemoir_pics/2.png")
 
     with tab3:
-        st.header("Urska")
-        st.image("digimemoir_pics/3.png", width=100)
+        # st.header("Urska")
+        st.image("digimemoir_pics/3.png")
 
     with col2.expander("Check out the nerd stats!"):
-        col11, col12, col13 = col2.columns(3)
+        col11, col12 = col2.columns(2)
         col11.metric(label="Happiness", value="85%", delta="+9%")
         col12.metric(label="Sleepiness", value="81%", delta="-3%")
-        col13.metric(label="Attentiveness", value="72%", delta="+6%")
 
 
     #st.write("Oops! We cannot access your webcam :(")
