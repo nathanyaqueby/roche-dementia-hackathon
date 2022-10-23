@@ -185,6 +185,7 @@ elif run in ["Face & person recognition", "Object detection"]:
     col2.subheader("Related memories")
 
     if run == "Person & face recognition":
+        st.write("here")
         tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
 
         with tab0:
@@ -200,18 +201,18 @@ elif run in ["Face & person recognition", "Object detection"]:
             st.image("digimemoir_pics/3.png")
 
     else:
-        tab0, tab1, tab2, tab3 = col2.tabs(["Microwave", "Stove", "Fridge", "Spoon"])
+        tab4, tab5, tab6, tab8 = col2.tabs(["Microwave", "Stove", "Fridge", "Spoon"])
 
-        with tab0:
+        with tab4:
             st.image("digimemoir_pics/4.png")
 
-        with tab1:
+        with tab5:
             st.image("digimemoir_pics/5.png")
 
-        with tab2:
+        with tab6:
             st.image("digimemoir_pics/6.png")
 
-        with tab3:
+        with tab8:
             st.image("digimemoir_pics/8.png")
 
 
