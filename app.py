@@ -154,9 +154,11 @@ elif run in ["Face & person recognition", "Object detection"]:
     if run == "Face & person recognition":
         video_file = open('DigiMemoir.mp4', 'rb')
         audio_file = open("gaby_digimemoir.mp3", "rb")
+        face = True
     else:
         video_file = open('DigiMemoir_Object.mp4', 'rb')
         audio_file = open("micro_digimemoir.mp3", "rb")
+        face = False
     video_bytes = video_file.read()
 
     col1, container, col2 = st.columns([side, width, side], gap="medium")
@@ -177,14 +179,12 @@ elif run in ["Face & person recognition", "Object detection"]:
 
     col2.subheader("Special memory found! 🧠")
     col2.write("Click here to play audio description")
-
     audio_bytes = audio_file.read()
-
     col2.audio(audio_bytes, format="audio/ogg", start_time=0)
 
     col2.subheader("Related memories")
 
-    if run == "Person & face recognition":
+    if face:
         st.write("here")
         tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
 
