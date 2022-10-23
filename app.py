@@ -122,7 +122,7 @@ st.markdown("Check out our documentation ([GitHub](https://github.com/nathanyaqu
 st.sidebar.image("DigiMemoir.png", use_column_width=True)
 st.sidebar.title("Upload a new memory")
 
-with st.sidebar.form(key ='Form1'):
+with st.sidebar.form():
     uploaded_file = st.file_uploader("Choose an image")
     user_word = st.text_input("Enter a name", "e.g. Ada Lovelace")
     category = st.radio("Choose a category", ("Person", "Object", "Landscape"))
