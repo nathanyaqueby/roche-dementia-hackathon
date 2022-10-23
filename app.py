@@ -97,7 +97,21 @@ class ObjectDetection:
 ## Dashboard ##
 ###############
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="DigiMemoir - Roche Dementia Hackathon",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/nathanyaqueby/roche-dementia-hackathon',
+        'Report a bug': "https://github.com/nathanyaqueby/roche-dementia-hackathon",
+        'About': "# Our mission is simple. To help people with dementia remember daily objects and their loved ones,"
+                 " our POC takes pictures of objects & people and stores the stories associated with them. "
+                 "Whenever the person focuses on an object or person, the digital memory will start talking about it, "
+                 "reminding the person of the history behind that object or person. Developed during the Roche"
+                 " Dementia Hackathon Challenge by Team 4 (Women in AI and Robotics)."
+    }
+)
 st.title("DigiMemoir")
 st.markdown("Welcome to **_DigiMemoir_**, a virtual person and object recognition system that"
             " enables you to **attach memories** to any everyday item. Using AI and Augmented Reality, we help"
@@ -122,7 +136,9 @@ run = st.checkbox('Run')
 if submitted and not run:
     st.subheader('New memory unlocked!')
     st.image(uploaded_file)
-    st.subheader(f'Introducing: {user_word}')
+    st.subheader(f'Meet {user_word}')
+    if spec:
+        st.markdown("_[Marked as extremely special]_")
     st.write(f'{description}')
 
 # FRAME_WINDOW = st.image([])
@@ -154,6 +170,13 @@ elif run:
     audio_bytes = audio_file.read()
 
     col2.audio(audio_bytes, format="audio/ogg", start_time=0)
+
+    col2.subheader("Related memories")
+    col2.markdown("- Banu (Person)")
+    col2.markdown("- Queby (Person)")
+
+    with col2.expander("Check out the nerd stats!"):
+        col2.metric(label="Emotion", value="89%", delta="Sleepy")
 
 
     #st.write("Oops! We cannot access your webcam :(")
