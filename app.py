@@ -4,7 +4,6 @@ import torch
 from torch import hub
 from time import time
 import numpy as np
-import streamlit_nested_layout
 
 
 @st.cache
