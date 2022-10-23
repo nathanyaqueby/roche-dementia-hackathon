@@ -164,14 +164,8 @@ elif run:
         col1.write(f'{description}')
 
         with col1.expander("Check out the nerd stats!"):
-            col1.subheader("Dominant emotion detected:")
-            col1.metric(label="Happiness", value="95%", delta="+9%")
-            """
-            col11, col12, col13 = col1.columns(2)
-            col11.metric(label="Happiness", value="95%", delta="+9%")
-            col12.metric(label="Sleepiness", value="81%", delta="-3%")
-            col12.metric(label="Attentiveness", value="71%", delta="+6%")
-            """
+            st.subheader("Dominant emotion detected:")
+            st.metric(label="Happiness", value="95%", delta="+9%")
 
     container.video(video_bytes, start_time=0)
 
@@ -184,7 +178,10 @@ elif run:
     col2.audio(audio_bytes, format="audio/ogg", start_time=0)
 
     col2.subheader("Related memories")
-    tab1, tab2, tab3 = col2.tabs(["Banu", "Queby", "Urska"])
+    tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
+
+    with tab0:
+        st.image("digimemoir_pics/0.png")
 
     with tab1:
         # st.subheader("Banu")
