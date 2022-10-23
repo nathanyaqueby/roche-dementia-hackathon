@@ -172,11 +172,25 @@ elif run:
     col2.audio(audio_bytes, format="audio/ogg", start_time=0)
 
     col2.subheader("Related memories")
-    col2.markdown("- Banu (Person)")
-    col2.markdown("- Queby (Person)")
+    tab1, tab2, tab3 = col2.tabs(["Banu", "Queby", "Urska"])
+
+    with tab1:
+        st.header("Banu")
+        st.image("digimemoir_pics/1.png", width=100)
+
+    with tab2:
+        st.header("Queby")
+        st.image("digimemoir_pics/2.png", width=100)
+
+    with tab3:
+        st.header("Urska")
+        st.image("digimemoir_pics/3.png", width=100)
 
     with col2.expander("Check out the nerd stats!"):
-        col2.metric(label="Emotion", value="89%", delta="Sleepy")
+        col11, col12, col13 = col2.columns(3)
+        col11.metric(label="Happiness", value="85%", delta="+9%")
+        col12.metric(label="Sleepiness", value="81%", delta="-3%")
+        col13.metric(label="Attentiveness", value="72%", delta="+6%")
 
 
     #st.write("Oops! We cannot access your webcam :(")
