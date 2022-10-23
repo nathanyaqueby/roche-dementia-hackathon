@@ -185,7 +185,6 @@ elif run in ["Face & person recognition", "Object detection"]:
     col2.subheader("Related memories")
 
     if face:
-        st.write("here")
         tab0, tab1, tab2, tab3 = col2.tabs(["Gaby", "Banu", "Queby", "Urska"])
 
         with tab0:
