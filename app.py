@@ -132,7 +132,7 @@ with st.sidebar.form(key='Form1'):
     submitted = st.form_submit_button(label='Submit memory ⚡')
 
 # run = st.checkbox('Run')
-run = st.selectbox("Pick an AI model to start!", ("Face & person recognition", "Object detection"))
+run = st.selectbox("", ("Pick an AI model to start!", "Face & person recognition", "Object detection"))
 
 if submitted and run not in ["Face & person recognition", "Object detection"]:
     st.subheader('New memory unlocked!')
@@ -219,5 +219,3 @@ elif run in ["Face & person recognition", "Object detection"]:
     #st.write("Oops! We cannot access your webcam :(")
     #st.write("Have a cat instead:")
     #st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
-else:
-    st.write('Check the box above to turn on the camera and start analyzing')
