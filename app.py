@@ -7,8 +7,8 @@ import numpy as np
 import streamlit_nested_layout
 
 
+@st.cache
 class ObjectDetection:
-
     def __init__(self, out_file="testing.avi"):
         self.out_file = out_file
         self.model = hub.load(
@@ -122,7 +122,7 @@ st.markdown("Check out our documentation ([GitHub](https://github.com/nathanyaqu
 st.sidebar.image("DigiMemoir.png", use_column_width=True)
 st.sidebar.title("Upload a new memory")
 
-with st.sidebar.form():
+with st.sidebar.form(key='Form1'):
     uploaded_file = st.file_uploader("Choose an image")
     user_word = st.text_input("Enter a name", "e.g. Ada Lovelace")
     category = st.radio("Choose a category", ("Person", "Object", "Landscape"))
@@ -159,7 +159,9 @@ elif run:
     if submitted:
         col1.subheader('New memory unlocked! ✨')
         col1.image(uploaded_file)
-        col1.subheader(f'Introducing: {user_word}')
+        col1.subheader(f'Meet {user_word}')
+        if spec:
+            col1.markdown("_[Marked as extremely special]_")
         col1.write(f'{description}')
 
         with col1.expander("Check out the nerd stats!"):
