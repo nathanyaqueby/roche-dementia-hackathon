@@ -105,8 +105,8 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://github.com/nathanyaqueby/roche-dementia-hackathon',
         'Report a bug': "https://github.com/nathanyaqueby/roche-dementia-hackathon",
-        'About': "# Our mission is simple. To help people with dementia remember daily objects and their loved ones,"
-                 " our POC takes pictures of objects & people and stores the stories associated with them. "
+        'About': "Our mission is simple. To help people with dementia remember daily objects and their loved ones,"
+                 " DigiMemoir takes pictures of objects & people and stores the stories associated with them. "
                  "Whenever the person focuses on an object or person, the digital memory will start talking about it, "
                  "reminding the person of the history behind that object or person. Developed during the Roche"
                  " Dementia Hackathon Challenge by Team 4 (Women in AI and Robotics)."
@@ -164,10 +164,14 @@ elif run:
         col1.write(f'{description}')
 
         with col1.expander("Check out the nerd stats!"):
+            col1.subheader("Dominant emotion detected:")
+            col1.metric(label="Happiness", value="95%", delta="+9%")
+            """
             col11, col12, col13 = col1.columns(2)
             col11.metric(label="Happiness", value="95%", delta="+9%")
             col12.metric(label="Sleepiness", value="81%", delta="-3%")
             col12.metric(label="Attentiveness", value="71%", delta="+6%")
+            """
 
     container.video(video_bytes, start_time=0)
 
