@@ -4,6 +4,7 @@ import torch
 from torch import hub
 from time import time
 import numpy as np
+import streamlit_nested_layout
 
 
 class ObjectDetection:
@@ -161,6 +162,12 @@ elif run:
         col1.subheader(f'Introducing: {user_word}')
         col1.write(f'{description}')
 
+        with col1.expander("Check out the nerd stats!"):
+            col11, col12, col13 = col1.columns(2)
+            col11.metric(label="Happiness", value="95%", delta="+9%")
+            col12.metric(label="Sleepiness", value="81%", delta="-3%")
+            col12.metric(label="Attentiveness", value="71%", delta="+6%")
+
     container.video(video_bytes, start_time=0)
 
     col2.subheader("Special memory found! 🧠")
@@ -185,11 +192,6 @@ elif run:
     with tab3:
         # st.header("Urska")
         st.image("digimemoir_pics/3.png")
-
-    with col2.expander("Check out the nerd stats!"):
-        col11, col12 = col2.columns(2)
-        col11.metric(label="Happiness", value="85%", delta="+9%")
-        col12.metric(label="Sleepiness", value="81%", delta="-3%")
 
 
     #st.write("Oops! We cannot access your webcam :(")
