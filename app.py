@@ -115,8 +115,8 @@ st.set_page_config(
 st.title("DigiMemoir")
 st.markdown("Welcome to **_DigiMemoir_**, a virtual person and object recognition system that"
             " enables you to **attach memories** to any everyday item. Using AI and Augmented Reality, we help"
-            " dementia & Alzheimer patients remember past experiences and sentiments.")
-st.markdown("Check out our documentation ([GitHub](https://github.com/nathanyaqueby/roche-dementia-hackathon))")
+            " dementia & Alzheimer patients remember past experiences and sentiments. "
+            "Check out our documentation on ([GitHub](https://github.com/nathanyaqueby/roche-dementia-hackathon))")
 
 st.sidebar.image("DigiMemoir.png", use_column_width=True)
 st.sidebar.title("Upload a new memory")
@@ -148,7 +148,10 @@ if submitted and run not in ["Face & person recognition", "Object detection"]:
 
 elif run in ["Face & person recognition", "Object detection"]:
 
-    width = 50
+    st.sidebar.title("Adjust layout")
+    width = st.sidebar.slider(
+        label="Width", min_value=0, max_value=100, value=50, format="%d%%"
+    )
     side = max((100 - width) / 2, 0.01)
 
     if run == "Face & person recognition":
